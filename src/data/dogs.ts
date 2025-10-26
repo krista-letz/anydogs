@@ -5,7 +5,7 @@ export const DOGS: Dog[] = [
     id: 'louie',
     name: 'Louis',
     breed: 'Maltipoo',
-    color: '#4A4A4A', // dark gray
+    color: '#8B4513', // brown
     size: 'very-small',
   },
   {
