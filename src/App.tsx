@@ -14,7 +14,7 @@ const CAT_SLOW_MULTIPLIER = 0.3;
 const CAT_DURATION = 2000;
 
 const MAX_TREATS_PER_DOG = 5;
-const MAX_CHEETAH_PER_DOG = 2;
+const MAX_CHEETAH_PER_DOG = 3;
 
 function App() {
   const [gameStatus, setGameStatus] = useState<GameStatus>('ready');
@@ -207,7 +207,7 @@ function App() {
           </button>
         )}
         {gameStatus === 'racing' && (
-          <div className="racing-status">🏁 Race in Progress! Click dogs for treats (5x) · Click 🐆 for cheetah speed (2x)! 🐆</div>
+          <div className="racing-status">🏁 Race in Progress! Click dogs for treats (5x) · Click 🐆 for cheetah speed (3x)! 🐆</div>
         )}
         {gameStatus === 'finished' && (
           <>

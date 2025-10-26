@@ -10,7 +10,7 @@ interface DogLaneProps {
 }
 
 const MAX_TREATS = 5;
-const MAX_CHEETAH = 2;
+const MAX_CHEETAH = 3;
 
 export function DogLane({ dog, state, onFeedTreat, onUnlockCheetah }: DogLaneProps) {
   const treatsRemaining = MAX_TREATS - state.treatsUsed;

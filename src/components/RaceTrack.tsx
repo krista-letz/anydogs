@@ -15,7 +15,7 @@ export function RaceTrack({ dogs, raceStates, onFeedTreat, onUnlockCheetah, catC
     <div className="race-track">
       <div className="track-header">
         <h2>North Beach, San Francisco</h2>
-        <p className="instructions">Click dogs to feed treats 🦴 (5x per dog) · Click 🐆 to unlock cheetah speed (2x per dog)!</p>
+        <p className="instructions">Click dogs to feed treats 🦴 (5x per dog) · Click 🐆 to unlock cheetah speed (3x per dog)!</p>
       </div>
       {catCrossing && (
         <div className="cat-crossing">
