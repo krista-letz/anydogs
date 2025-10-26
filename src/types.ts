@@ -4,11 +4,13 @@ export interface Dog {
   breed: string;
   color: string;
   size: 'very-small' | 'small' | 'medium' | 'large';
+  collarColor: string;
 }
 
 export interface DogRaceState {
   position: number; // 0-100
   speed: number;
+  currentSpeed: number; // Actual speed being used this frame
   boosted: boolean;
   boostEndTime: number;
   cheetahMode: boolean;
@@ -19,9 +21,13 @@ export interface DogRaceState {
   cheetahUsed: number;
   barking: boolean;
   barkEndTime: number;
+  fatigue: number; // 0-100, affects speed when high
+  fatiguedByBall: boolean;
+  ballEndTime: number;
 }
 
-export type GameStatus = 'ready' | 'racing' | 'finished';
+export type GameStatus = 'ready' | 'countdown' | 'racing' | 'finished';
+export type WeatherType = 'sunny' | 'rainy';
 
 export interface RaceHistory {
   id: string;
@@ -36,5 +42,11 @@ export interface BettingState {
   selectedDog: string | null;
   betAmount: number;
   totalCoins: number;
+}
+
+export interface Pickup {
+  id: string;
+  type: 'treat' | 'cheetah';
+  position: number;
 }
 

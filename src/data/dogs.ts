@@ -7,6 +7,7 @@ export const DOGS: Dog[] = [
     breed: 'Maltipoo',
     color: '#8B4513', // brown
     size: 'very-small',
+    collarColor: '#FF6347', // red collar
   },
   {
     id: 'freddy',
@@ -14,6 +15,7 @@ export const DOGS: Dog[] = [
     breed: 'Poodle',
     color: '#FFFFFF', // white
     size: 'small',
+    collarColor: '#4169E1', // blue collar
   },
   {
     id: 'olive',
@@ -21,6 +23,7 @@ export const DOGS: Dog[] = [
     breed: 'Golden Retriever',
     color: '#F5DEB3', // cream
     size: 'large',
+    collarColor: '#FFD700', // gold collar
   },
   {
     id: 'gary',
@@ -28,6 +31,7 @@ export const DOGS: Dog[] = [
     breed: 'Dachshund',
     color: '#A0522D', // brown
     size: 'small',
+    collarColor: '#FF1493', // pink collar
   },
   {
     id: 'iko',
@@ -35,6 +39,7 @@ export const DOGS: Dog[] = [
     breed: 'Golden Retriever',
     color: '#DAA520', // golden
     size: 'large',
+    collarColor: '#32CD32', // green collar
   },
 ];
 

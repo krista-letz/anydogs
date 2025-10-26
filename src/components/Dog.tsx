@@ -9,9 +9,10 @@ interface DogProps {
   cheetahMode: boolean;
   distractedByCat: boolean;
   barking: boolean;
+  fatiguedByBall: boolean;
 }
 
-export function Dog({ dog, position, onClick, boosted, cheetahMode, distractedByCat, barking }: DogProps) {
+export function Dog({ dog, position, onClick, boosted, cheetahMode, distractedByCat, barking, fatiguedByBall }: DogProps) {
   const sizeMultiplier = {
     'very-small': 0.6,
     'small': 0.8,
@@ -26,6 +27,7 @@ export function Dog({ dog, position, onClick, boosted, cheetahMode, distractedBy
         left: `${position}%`,
         transform: `scale(${sizeMultiplier})`,
         ['--dog-scale' as string]: sizeMultiplier,
+        filter: 'drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3))',
       }}
       onClick={onClick}
       title={`Click to feed ${dog.name} a treat!`}
@@ -86,6 +88,15 @@ export function Dog({ dog, position, onClick, boosted, cheetahMode, distractedBy
       {cheetahMode && <div className="cheetah-icon">🐆</div>}
       {distractedByCat && <div className="cat-icon">😺</div>}
       {barking && <div className="bark-text">WOOF!</div>}
+      {fatiguedByBall && <div className="ball-icon">🎾</div>}
+      {/* Sparkles effect for cheetah mode */}
+      {cheetahMode && (
+        <div className="sparkles">
+          <div className="sparkle"></div>
+          <div className="sparkle"></div>
+          <div className="sparkle"></div>
+        </div>
+      )}
     </div>
   );
 }

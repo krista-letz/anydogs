@@ -1,4 +1,4 @@
-import type { Dog as DogType, DogRaceState } from '../types';
+import type { Dog as DogType, DogRaceState, Pickup } from '../types';
 import { Dog } from './Dog';
 import './DogLane.css';
 
@@ -7,20 +7,27 @@ interface DogLaneProps {
   state: DogRaceState;
   onFeedTreat: () => void;
   onUnlockCheetah: () => void;
+  pickups: Pickup[];
+  position: number;
 }
 
 const MAX_TREATS = 5;
 const MAX_CHEETAH = 3;
 
-export function DogLane({ dog, state, onFeedTreat, onUnlockCheetah }: DogLaneProps) {
+export function DogLane({ dog, state, onFeedTreat, onUnlockCheetah, pickups, position }: DogLaneProps) {
   const treatsRemaining = MAX_TREATS - state.treatsUsed;
   const cheetahRemaining = MAX_CHEETAH - state.cheetahUsed;
+
+  const getPositionEmoji = (pos: number) => {
+    const emojis = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣'];
+    return emojis[pos - 1] || `${pos}th`;
+  };
 
   return (
     <div className="dog-lane">
       <div className="lane-label">
         <div className="dog-info">
-          <div className="dog-name">{dog.name}</div>
+          <div className="dog-name">{dog.name} {getPositionEmoji(position)}</div>
           <div className="power-ups">
             <button 
               className={`power-up-button ${treatsRemaining === 0 ? 'disabled' : ''}`}
@@ -44,6 +51,17 @@ export function DogLane({ dog, state, onFeedTreat, onUnlockCheetah }: DogLanePro
       <div className="lane-track">
         <div className="start-line">START</div>
         <div className="finish-line">FINISH</div>
+        <div className="finish-ribbon"></div>
+        {/* Render pickups on track */}
+        {pickups.map((pickup) => (
+          <div
+            key={pickup.id}
+            className={`track-pickup ${pickup.type}`}
+            style={{ left: `${pickup.position}%` }}
+          >
+            {pickup.type === 'treat' ? '🦴' : '🐆'}
+          </div>
+        ))}
         <Dog 
           dog={dog} 
           position={state.position} 
@@ -52,6 +70,7 @@ export function DogLane({ dog, state, onFeedTreat, onUnlockCheetah }: DogLanePro
           cheetahMode={state.cheetahMode}
           distractedByCat={state.distractedByCat}
           barking={state.barking}
+          fatiguedByBall={state.fatiguedByBall}
         />
       </div>
     </div>

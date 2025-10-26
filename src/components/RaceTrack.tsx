@@ -1,4 +1,4 @@
-import type { Dog, DogRaceState } from '../types';
+import type { Dog, DogRaceState, Pickup, WeatherType } from '../types';
 import { DogLane } from './DogLane';
 import './RaceTrack.css';
 
@@ -8,11 +8,27 @@ interface RaceTrackProps {
   onFeedTreat: (dogId: string) => void;
   onUnlockCheetah: (dogId: string) => void;
   catCrossing: boolean;
+  ballThrown: boolean;
+  pickups: Pickup[];
+  weather: WeatherType;
 }
 
-export function RaceTrack({ dogs, raceStates, onFeedTreat, onUnlockCheetah, catCrossing }: RaceTrackProps) {
+export function RaceTrack({ dogs, raceStates, onFeedTreat, onUnlockCheetah, catCrossing, ballThrown, pickups, weather }: RaceTrackProps) {
+  const getPosition = (dogId: string): number => {
+    const sorted = Array.from(raceStates.entries())
+      .sort((a, b) => b[1].position - a[1].position);
+    return sorted.findIndex(([id]) => id === dogId) + 1;
+  };
+
   return (
-    <div className="race-track">
+    <div className={`race-track ${weather}`}>
+      {weather === 'rainy' && (
+        <div className="rain-overlay">
+          {Array.from({ length: 50 }).map((_, i) => (
+            <div key={i} className="rain-drop" style={{ left: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 2}s` }}></div>
+          ))}
+        </div>
+      )}
       <div className="track-header">
         <h2>North Beach, San Francisco</h2>
         <p className="instructions">Click dogs to feed treats 🦴 (5x per dog) · Click 🐆 to unlock cheetah speed (3x per dog)!</p>
@@ -21,6 +37,12 @@ export function RaceTrack({ dogs, raceStates, onFeedTreat, onUnlockCheetah, catC
         <div className="cat-crossing">
           <div className="cat-sprite">🐱</div>
           <div className="cat-warning">Cat crossing! Dogs distracted!</div>
+        </div>
+      )}
+      {ballThrown && (
+        <div className="ball-event">
+          <div className="ball-sprite">🎾</div>
+          <div className="ball-warning">Ball thrown! Dog chasing!</div>
         </div>
       )}
       <div className="lanes">
@@ -33,6 +55,8 @@ export function RaceTrack({ dogs, raceStates, onFeedTreat, onUnlockCheetah, catC
               state={state}
               onFeedTreat={() => onFeedTreat(dog.id)}
               onUnlockCheetah={() => onUnlockCheetah(dog.id)}
+              pickups={pickups}
+              position={getPosition(dog.id)}
             />
           );
         })}

@@ -4,16 +4,27 @@
   height: 120px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0%,
-    rgba(255, 255, 255, 0.03) 45%,
-    rgba(255, 255, 255, 0.08) 47%,
-    rgba(255, 255, 255, 0.08) 53%,
-    rgba(255, 255, 255, 0.03) 55%,
-    rgba(255, 255, 255, 0.03) 100%
-  );
   z-index: 2;
+}
+
+.dog-lane:nth-child(odd) .lane-track {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.1) 2%,
+    transparent 2%,
+    transparent 4%
+  );
+}
+
+.dog-lane:nth-child(even) .lane-track {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.1) 2%,
+    transparent 2%,
+    transparent 4%
+  );
 }
 
 .lane-label {
@@ -165,3 +176,62 @@
   text-shadow: none;
 }
 
+.finish-ribbon {
+  position: absolute;
+  right: -8px;
+  top: 0;
+  height: 100%;
+  width: 16px;
+  background: linear-gradient(
+    90deg,
+    #FF6B6B 0%,
+    #FF6B6B 25%,
+    #4ECDC4 25%,
+    #4ECDC4 50%,
+    #FFE66D 50%,
+    #FFE66D 75%,
+    #95E1D3 75%,
+    #95E1D3 100%
+  );
+  z-index: 2;
+  animation: ribbonFlutter 0.5s ease-in-out infinite;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes ribbonFlutter {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-2px);
+  }
+}
+
+.track-pickup {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  z-index: 5;
+  animation: pickupBounce 0.8s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  pointer-events: none;
+}
+
+.track-pickup.treat {
+  animation: pickupBounce 0.8s ease-in-out infinite;
+}
+
+.track-pickup.cheetah {
+  animation: pickupBounce 0.6s ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px rgba(255, 200, 0, 0.5));
+}
+
+@keyframes pickupBounce {
+  0%, 100% {
+    transform: translateY(-50%) translateY(0);
+  }
+  50% {
+    transform: translateY(-50%) translateY(-8px);
+  }
+}

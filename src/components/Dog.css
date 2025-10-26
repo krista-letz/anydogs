@@ -54,6 +54,18 @@
   align-items: center;
 }
 
+.dog-collar {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 8px;
+  border-radius: 4px;
+  z-index: 2;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
 .dog-head {
   position: absolute;
   width: 42px;
@@ -297,5 +309,123 @@
   100% { 
     opacity: 1; 
     transform: translateX(-50%) scale(1) rotate(0deg);
+  }
+}
+
+.ball-icon {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  animation: ballBounce 1s ease-out;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  pointer-events: none;
+}
+
+@keyframes ballBounce {
+  0% { 
+    opacity: 0; 
+    transform: translateX(-50%) translateY(10px) scale(0.5);
+  }
+  50% { 
+    opacity: 1; 
+    transform: translateX(-50%) translateY(-10px) scale(1.2);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateX(-50%) translateY(-5px) scale(1);
+  }
+}
+
+.sparkles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #FFD700 0%, transparent 70%);
+  border-radius: 50%;
+  animation: sparkleFloat 1.5s ease-out infinite;
+}
+
+.sparkle:nth-child(1) {
+  animation-delay: 0s;
+  top: -15px;
+  left: -10px;
+}
+
+.sparkle:nth-child(2) {
+  animation-delay: 0.3s;
+  top: 10px;
+  left: 5px;
+}
+
+.sparkle:nth-child(3) {
+  animation-delay: 0.6s;
+  top: -5px;
+  left: 12px;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 0;
+    transform: scale(0) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) translateY(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translateY(-20px);
+  }
+}
+
+.paw-print {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(139, 90, 43, 0.3) 40%, transparent 60%);
+  border-radius: 50%;
+  bottom: -20px;
+  animation: pawFade 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+.paw-print::before,
+.paw-print::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(139, 90, 43, 0.3);
+  border-radius: 50%;
+}
+
+.paw-print::before {
+  top: -3px;
+  left: -2px;
+}
+
+.paw-print::after {
+  top: -3px;
+  right: -2px;
+}
+
+@keyframes pawFade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
   }
 }
