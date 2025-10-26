@@ -1,0 +1,89 @@
+.race-track {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.track-header {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.track-header h2 {
+  margin: 0 0 10px 0;
+  color: #ffffff;
+  text-shadow: none;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.instructions {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  text-shadow: none;
+  font-weight: 400;
+}
+
+.lanes {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.cat-crossing {
+  position: fixed;
+  top: 50%;
+  left: -100px;
+  transform: translateY(-50%);
+  z-index: 1000;
+  animation: catCrossing 3s linear forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cat-sprite {
+  font-size: 64px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  animation: catBounce 0.5s ease-in-out infinite;
+}
+
+.cat-warning {
+  background: rgba(255, 100, 100, 0.95);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(255, 100, 100, 0.4);
+}
+
+@keyframes catCrossing {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: calc(100vw + 100px);
+  }
+}
+
+@keyframes catBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+

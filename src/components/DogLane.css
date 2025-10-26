@@ -1,0 +1,167 @@
+.dog-lane {
+  display: flex;
+  align-items: center;
+  height: 120px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.08) 47%,
+    rgba(255, 255, 255, 0.08) 53%,
+    rgba(255, 255, 255, 0.03) 55%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  z-index: 2;
+}
+
+.lane-label {
+  width: 180px;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: none;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.dog-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
+}
+
+.dog-name {
+  text-align: center;
+  font-weight: 500;
+}
+
+.power-ups {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.power-up-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.power-up-button:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.power-up-button:active:not(.disabled) {
+  transform: scale(0.95);
+}
+
+.power-up-button.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.power-up-button .count {
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 10px;
+  text-align: center;
+}
+
+.power-up-button.cheetah {
+  background: rgba(255, 200, 0, 0.1);
+  border-color: rgba(255, 200, 0, 0.3);
+}
+
+.power-up-button.cheetah:hover:not(.disabled) {
+  background: rgba(255, 200, 0, 0.2);
+  border-color: rgba(255, 200, 0, 0.5);
+}
+
+.cheetah-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cheetah-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.cheetah-button:active {
+  transform: scale(0.95);
+}
+
+.lane-track {
+  flex: 1;
+  position: relative;
+  height: 100%;
+}
+
+.start-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+
+.start-line::after {
+  content: 'START';
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: none;
+}
+
+.finish-line {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 3;
+}
+
+.finish-line::before {
+  content: 'FINISH';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: none;
+}
+
