@@ -3,7 +3,7 @@ import type { Dog } from '../types';
 export const DOGS: Dog[] = [
   {
     id: 'louie',
-    name: 'Louie',
+    name: 'Louis',
     breed: 'Maltipoo',
     color: '#4A4A4A', // dark gray
     size: 'very-small',
