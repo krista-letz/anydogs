@@ -198,7 +198,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>anypets</h1>
+      <h1>anydogs</h1>
 
       <div className="controls">
         {gameStatus === 'ready' && (
